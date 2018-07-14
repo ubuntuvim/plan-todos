@@ -38,6 +38,7 @@
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
     "ember-data": "~3.1.0",
+    "ember-debug-logger": "^1.1.0",
     "ember-electron": "^2.8.0",
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
@@ -52,9 +53,11 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "dependencies": {
+    "electron": "^2.0.5",
     "electron-compile": "^6.4.3",
     "electron-protocol-serve": "^1.3.0",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "fs-extra": "^6.0.1"
   },
   "config": {
     "forge": "./ember-electron/electron-forge-config.js"

@@ -24,7 +24,9 @@ export default Component.extend({
 			} else {
 				this.set('todo.title', todoTitle.trim());
 				this.set('editing', false);
-				this.get('onEndEdit')();
+        // this.get('onEndEdit')();
+        set(this.get('todo'), 'title', todoTitle);
+        this.get('repo').persist();
 			}
 		},
 
