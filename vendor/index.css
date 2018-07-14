@@ -27,7 +27,7 @@ body {
   background: #f5f5f5;
   color: #4d4d4d;
   min-width: 230px;
-  max-width: 550px;
+  max-width: 650px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
@@ -208,13 +208,14 @@ label[for='toggle-all'] {
 }
 
 #todo-list li label {
-  white-space: pre;
   word-break: break-word;
   padding: 15px 60px 15px 15px;
   margin-left: 45px;
   display: block;
-  line-height: 1.2;
   transition: color 0.4s;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 #todo-list li.completed label {
@@ -235,6 +236,7 @@ label[for='toggle-all'] {
   color: #cc9a9a;
   margin-bottom: 11px;
   transition: color 0.2s ease-out;
+  cursor: pointer;
 }
 
 #todo-list li .destroy:hover {
@@ -368,9 +370,11 @@ Can't use it globally since it destroys checkboxes in Firefox
 
   #todo-list li .toggle {
     height: 40px;
+    cursor: pointer;
   }
 
   #toggle-all {
+    cursor: pointer;
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
     -webkit-appearance: none;
