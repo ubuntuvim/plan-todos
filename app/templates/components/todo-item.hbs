@@ -1,4 +1,4 @@
-<div class="view">
+<div class="view" title={{todo.title}}>
   <input type="checkbox" class="toggle" checked={{todo.completed}} onchange={{action 'toggleCompleted'}}>
   <label ondblclick={{action 'startEditing'}}>{{todo.title}}</label>
   <button onclick={{action 'removeTodo'}} class="destroy"></button>
