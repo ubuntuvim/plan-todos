@@ -8,7 +8,10 @@
       <footer id="footer">
         <span id="todo-count"><strong>{{remaining.length}}</strong> {{pluralize remaining.length}} left</span>
         <ul id="filters">
+          <!--
           <li>{{#link-to "index" activeClass="selected"}}All{{/link-to}}</li>
+          -->
+          <li>{{#link-to "all" activeClass="selected"}}All{{/link-to}}</li>
           <li>{{#link-to "active" activeClass="selected"}}Active{{/link-to}}</li>
           <li>{{#link-to "completed" activeClass="selected"}}Completed{{/link-to}}</li>
         </ul>
