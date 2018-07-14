@@ -3,8 +3,15 @@ const electron = require('electron');
 const { app, BrowserWindow, protocol } = require('electron');
 const { dirname, join, resolve } = require('path');
 const protocolServe = require('electron-protocol-serve');
+const {ipcMain} = require('electron');
+const fse = require('fs-extra');
+const fs = require('fs');
+
 
 let mainWindow = null;
+
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
+
 
 // Registering a protocol & schema to serve our Ember application
 protocol.registerStandardSchemes(['serve'], { secure: true });
@@ -37,7 +44,7 @@ app.on('ready', () => {
   });
 
   // If you want to open up dev tools programmatically, call
-  // mainWindow.openDevTools();
+  mainWindow.openDevTools();
 
   const emberAppLocation = 'serve://dist';
 
@@ -66,6 +73,8 @@ app.on('ready', () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+
 });
 
 // Handle an unhandled error in the main thread
@@ -88,3 +97,46 @@ process.on('uncaughtException', (err) => {
   console.log('This is a serious issue that needs to be handled and/or debugged.');
   console.log(`Exception: ${err}`);
 });
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at:', p, 'reason:', reason);
+  // application specific logging, throwing an error, or other logic here
+});
+
+// 文件保存在用户应用目录：/Users/ubuntuvim/Library/Application Support/Electron（macOS）
+const ufile = app.getPath('userData') + '/plan-todos/data.json';
+//创建文件
+fse.ensureFile(ufile, err => {
+  console.log("文件"+ufile+"创建失败：\n" + err);
+});
+
+// 保存web页面发送过来的数据
+ipcMain.on('todos-data', (event, data) => {
+  console.log('web发送过来的数据: ' + data);
+  // 持久化数据到本地json文件中
+  if (data) {
+    // fse.writeJson(ufile, data);
+    fs.writeFileSync(ufile, data, 'utf8');
+  }
+  console.log("主线程数据写入完毕。。。");
+});
+
+// 同步方式返回数据到web
+ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg);
+  event.returnValue = fs.readFileSync(ufile, 'utf8');
+});
+
+/**
+ * 读取json文件
+ * @unuse
+ */
+function readJsonFile(file) {
+  try {
+    const data = fse.readJson(file);
+    console.log('数据加载完毕...' + data);
+    return data;
+  } catch (err) {
+    console.error("数据加载失败：" + err);
+  }
+}
