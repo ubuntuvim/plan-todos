@@ -44,7 +44,7 @@ app.on('ready', () => {
   });
 
   // If you want to open up dev tools programmatically, call
-  // mainWindow.openDevTools();
+  mainWindow.openDevTools();
 
   const emberAppLocation = 'serve://dist';
 
@@ -105,7 +105,10 @@ process.on('unhandledRejection', (reason, p) => {
 
 // 文件保存在用户应用目录：/Users/ubuntuvim/Library/Application Support/Electron（macOS）
 const ufile = app.getPath('userData') + '/plan-todos/data.json';
+<<<<<<< HEAD
 console.log("文件保存路径：" + ufile);
+=======
+>>>>>>> 487fa5741f6bcac68f044706a1aa37fa62e48eca
 //创建文件
 fse.ensureFile(ufile, err => {
   console.log("文件"+ufile+"创建失败：\n" + err);

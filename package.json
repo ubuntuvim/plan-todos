@@ -24,7 +24,10 @@
     "devtron": "^1.4.0",
     "electron-forge": "^5.2.2",
     "electron-prebuilt-compile": "2.0.4",
+<<<<<<< HEAD
     "electron-winstaller": "^2.6.4",
+=======
+>>>>>>> 487fa5741f6bcac68f044706a1aa37fa62e48eca
     "ember-ajax": "^3.0.0",
     "ember-cli": "~3.1.2",
     "ember-cli-app-version": "^3.0.0",
