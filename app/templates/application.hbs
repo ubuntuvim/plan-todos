@@ -6,27 +6,25 @@
     {{outlet}}
     {{#if (gt model.length 0)}}
       <footer id="footer">
+      <!--
         <span id="todo-count"><strong>{{remaining.length}}</strong> {{pluralize remaining.length}} left</span>
+        -->
         <ul id="filters">
           <!--
           <li>{{#link-to "index" activeClass="selected"}}All{{/link-to}}</li>
           -->
-          <li>{{#link-to "all" activeClass="selected"}}All{{/link-to}}</li>
-          <li>{{#link-to "active" activeClass="selected"}}Active{{/link-to}}</li>
-          <li>{{#link-to "completed" activeClass="selected"}}Completed{{/link-to}}</li>
+          <li>{{#link-to "all" activeClass="selected"}}所有({{model.length}}){{/link-to}}</li>
+          <li>{{#link-to "active" activeClass="selected"}}处理中({{remaining.length}}){{/link-to}}</li>
+          <li>{{#link-to "completed" activeClass="selected"}}已完成({{completed.length}}){{/link-to}}</li>
         </ul>
-        {{#if completed.length}}
-          <button id="clear-completed" onclick={{action 'clearCompleted'}}>Clear completed</button>
-        {{/if}}
       </footer>
     {{/if}}
 </section>
 <footer id="info">
-  <p>Double-click to edit a todo</p>
+  <p>列表双击可编辑</p>
   <p>
     Created by
-    <a href="http://github.com/cibernox">Miguel Camba</a>,
-    <a href="http://github.com/addyosmani">Addy Osmani</a>
+    <a href="http://github.com/ubuntuvim">ubuntuvim</a>,
   </p>
-  <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+  <p>Part of <a href="https://github.com/ubuntuvim/plan-todos">TodoMVC</a></p>
 </footer>

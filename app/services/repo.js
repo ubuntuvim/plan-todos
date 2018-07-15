@@ -1,7 +1,7 @@
 import Service from '@ember/service';
 import Evented from '@ember/object/evented';
 
-const fs = requireNode('fs-extra');
+// const fs = requireNode('fs-extra');
 const { ipcRenderer } = requireNode('electron');
 
 export default Service.extend(Evented, {
